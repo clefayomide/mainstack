@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import NavMenu from "@/components/molecules/navigation-menu";
+import Sticky from "@/components/molecules/sticky";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const degular = localFont({
+  src: [
+    {
+      path: "../../public/font/Degular-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -24,10 +26,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${degular.className} p-[16px] `}>
+        <main>
+          <NavMenu />
+          <Sticky />
+          <div className="py-[80px] px-[140px]">{children}</div>
+        </main>
       </body>
     </html>
   );

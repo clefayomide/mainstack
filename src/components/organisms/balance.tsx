@@ -1,0 +1,37 @@
+import React from "react";
+import { Button } from "../ui/button";
+import { cn } from "@/lib/utils";
+import { BalanceType } from "@/types";
+import Box from "../atoms/box";
+
+export default function Balance({
+  wrapperClassName = "",
+}: Readonly<BalanceType>) {
+  return (
+    <Box
+      variant="section"
+      className={cn(
+        "w-[462px] h-[72px] flex justify-between items-center",
+        wrapperClassName
+      )}
+    >
+      <Box variant="section">
+        <Box
+          variant="h5"
+          className="text-[#56616B] font-medium text-sm leading-[16px]"
+        >
+          Available Balance
+        </Box>
+        <Box
+          variant="h3"
+          className="font-bold mt-1 text-primary text-[36px] leading-[48px]"
+        >
+          USD 120,500.00
+        </Box>
+      </Box>
+      <Button className="w-[167px] h-[52px] py-[14px] px-[28px]">
+        Withdraw
+      </Button>
+    </Box>
+  );
+}
