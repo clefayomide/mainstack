@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${degular.className} p-[16px] `}>
-        <main>
+        <main className="w-full 2xl:w-[1500px] 2xl:m-auto">
           <NavMenu />
           <Sticky />
           <div className="py-[80px] px-[140px]">{children}</div>

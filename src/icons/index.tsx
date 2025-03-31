@@ -279,6 +279,7 @@ export function BarlistOne() {
       width="40"
       height="40"
       viewBox="0 0 40 40"
+      className="mix-blend-luminosity hover:mix-blend-normal"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -345,6 +346,7 @@ export function BarlistTwo() {
       width="40"
       height="40"
       viewBox="0 0 40 40"
+      className="mix-blend-luminosity hover:mix-blend-normal"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -407,6 +409,7 @@ export function BarlistThree() {
       width="40"
       height="40"
       viewBox="0 0 40 40"
+      className="mix-blend-luminosity hover:mix-blend-normal"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -469,6 +472,7 @@ export function BarlistFour() {
       width="40"
       height="40"
       viewBox="0 0 40 40"
+      className="mix-blend-luminosity hover:mix-blend-normal"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
@@ -557,7 +561,7 @@ export function Info() {
 export function ChartFooterLine() {
   return (
     <svg
-      width="771"
+      width="100%"
       height="6"
       viewBox="0 0 771 6"
       fill="none"
@@ -567,6 +571,122 @@ export function ChartFooterLine() {
         d="M0.333333 3C0.333333 4.47276 1.52724 5.66667 3 5.66667C4.47276 5.66667 5.66667 4.47276 5.66667 3C5.66667 1.52724 4.47276 0.333333 3 0.333333C1.52724 0.333333 0.333333 1.52724 0.333333 3ZM765.541 3C765.541 4.47276 766.735 5.66667 768.208 5.66667C769.68 5.66667 770.874 4.47276 770.874 3C770.874 1.52724 769.68 0.333333 768.208 0.333333C766.735 0.333333 765.541 1.52724 765.541 3ZM3 3.5L768.208 3.5V2.5L3 2.5V3.5Z"
         fill="#DBDEE6"
       />
+    </svg>
+  );
+}
+
+export function ChevronDown() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_1_1413"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="20"
+        height="20"
+      >
+        <rect width="20" height="20" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_1_1413)">
+        <path
+          d="M9.99942 13.0211C9.8789 13.0211 9.76673 13.0019 9.66289 12.9634C9.55904 12.925 9.46032 12.8589 9.36674 12.7653L4.87252 8.27112C4.73405 8.13267 4.66322 7.95864 4.66002 7.74902C4.6568 7.53941 4.72763 7.36217 4.87252 7.2173C5.01738 7.07243 5.19302 7 5.39942 7C5.60582 7 5.78145 7.07243 5.92632 7.2173L9.99942 11.2904L14.0725 7.2173C14.211 7.07885 14.385 7.00802 14.5946 7.0048C14.8042 7.0016 14.9814 7.07243 15.1263 7.2173C15.2712 7.36217 15.3436 7.53781 15.3436 7.74422C15.3436 7.95062 15.2712 8.12626 15.1263 8.27112L10.6321 12.7653C10.5385 12.8589 10.4398 12.925 10.3359 12.9634C10.2321 13.0019 10.1199 13.0211 9.99942 13.0211Z"
+          fill="#131316"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function Download() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_1_1419"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="20"
+        height="20"
+      >
+        <rect width="20" height="20" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_1_1419)">
+        <path
+          d="M10.0001 12.6875L7.04175 9.75L7.64591 9.14583L9.58341 11.0833V3.875H10.4167V11.0833L12.3542 9.14583L12.9584 9.75L10.0001 12.6875ZM5.52091 15.8333C5.13203 15.8333 4.80925 15.705 4.55258 15.4483C4.29536 15.1911 4.16675 14.8681 4.16675 14.4792V12.5H5.00008V14.4792C5.00008 14.6181 5.0523 14.7394 5.15675 14.8433C5.26064 14.9478 5.38203 15 5.52091 15H14.4792C14.6181 15 14.7395 14.9478 14.8434 14.8433C14.9479 14.7394 15.0001 14.6181 15.0001 14.4792V12.5H15.8334V14.4792C15.8334 14.8681 15.7051 15.1911 15.4484 15.4483C15.1912 15.705 14.8681 15.8333 14.4792 15.8333H5.52091Z"
+          fill="#131316"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function Inflow() {
+  return (
+    <svg
+      width="21"
+      height="21"
+      viewBox="0 0 21 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_12197_245"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="21"
+        height="21"
+      >
+        <rect x="0.5" y="0.5" width="20" height="20" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_12197_245)">
+        <path
+          d="M5.25 15.75V8.25H6.08333V14.3333L16.1667 4.25L16.75 4.83333L6.66667 14.9167H12.75V15.75H5.25Z"
+          fill="#075132"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function Outflow() {
+  return (
+    <svg
+      width="21"
+      height="21"
+      viewBox="0 0 21 21"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_12197_260"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="21"
+        height="21"
+      >
+        <rect x="0.5" y="0.5" width="20" height="20" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_12197_260)">
+        <path
+          d="M4.99984 16.5833L4.4165 16L14.4998 5.91668H8.4165V5.08334H15.9165V12.5833H15.0832V6.50001L4.99984 16.5833Z"
+          fill="#961100"
+        />
+      </g>
     </svg>
   );
 }
