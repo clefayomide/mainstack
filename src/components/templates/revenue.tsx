@@ -16,7 +16,7 @@ export default function Revenue() {
           <Balance />
           <Chart wrapperClassName="mt-32 lg:mt-[20px] xl:mt-auto" />
         </Box>
-        <Box variant="section" className="mt-14 md:mt-auto w-full md:w-[260px] lg:w-[271px]">
+        <Box variant="section" className="mt-14 md:mt-0 w-full md:w-[260px] lg:w-[271px]">
           <Summary />
         </Box>
       </Box>
