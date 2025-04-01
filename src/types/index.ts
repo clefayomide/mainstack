@@ -8,9 +8,13 @@ export type TypographyPropType = {
   className?: string;
 };
 
-export type BalanceType = { wrapperClassName?: string };
+export type BalancePropType = { wrapperClassName?: string };
 
-export type TransactionType = {
+export type TransactionPropType = {
   transactionType: "deposit" | "withdrawal";
   variant?: "default" | "successful" | "pending" | "failed";
+};
+
+export type ChartPropType = {
+  wrapperClassName?: string;
 };

@@ -30,7 +30,7 @@ export default function RootLayout({
         <main className="w-full 2xl:w-[1500px] 2xl:m-auto">
           <NavMenu />
           <Sticky />
-          <div className="py-[80px] px-[140px]">{children}</div>
+          <div className="py-[60px] md:px-[20px] lg:px-[70px] md:py-[80px] xl:px-[140px]">{children}</div>
         </main>
       </body>
     </html>

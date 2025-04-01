@@ -1,14 +1,14 @@
 import React from "react";
 import Box from "../atoms/box";
 import { Inflow, Outflow } from "@/icons";
-import { TransactionType } from "@/types";
+import { TransactionPropType } from "@/types";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 export default function Transaction({
   transactionType,
   variant,
-}: Readonly<TransactionType>) {
+}: Readonly<TransactionPropType>) {
   const isInflow = transactionType === "deposit";
   const icon = isInflow ? <Inflow /> : <Outflow />;
 
@@ -49,14 +49,14 @@ export default function Transaction({
         <Box>
           <Box
             variant="h5"
-            className="font-medium text-base leading-[24px] text-primary"
+            className="font-medium text-[15px] md:text-base leading-[24px] text-primary"
           >
             Psychology of Money{" "}
           </Box>
           <Box
             variant="p"
             className={cn(
-              `text-sm font-medium leading-[16px]`,
+              `text-xs md:text-sm font-medium leading-[16px]`,
               statusVariants({ variant })
             )}
           >
@@ -67,13 +67,13 @@ export default function Transaction({
       <Box>
         <Box
           variant="h6"
-          className="text-base text-right font-bold text-primary leading-[150%]"
+          className="text-sm md:text-base text-right font-bold text-primary leading-[150%]"
         >
           USD 600
         </Box>
         <Box
           variant="p"
-          className="font-medium text-right mt-1 text-sm text-[#56616B] leading-[16px]"
+          className="font-medium text-right mt-1 text-xs md:text-sm text-[#56616B] leading-[16px]"
         >
           Apr 03,2022
         </Box>

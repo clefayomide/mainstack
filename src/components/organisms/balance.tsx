@@ -1,17 +1,17 @@
 import React from "react";
 import { Button } from "../ui/button";
 import { cn } from "@/lib/utils";
-import { BalanceType } from "@/types";
+import { BalancePropType } from "@/types";
 import Box from "../atoms/box";
 
 export default function Balance({
   wrapperClassName = "",
-}: Readonly<BalanceType>) {
+}: Readonly<BalancePropType>) {
   return (
     <Box
       variant="section"
       className={cn(
-        "w-[462px] h-[72px] flex justify-between items-center",
+        "w-full md:w-[462px] h-[72px] flex flex-col md:flex-row gap-5 md:gap-0 justify-between md:items-center",
         wrapperClassName
       )}
     >

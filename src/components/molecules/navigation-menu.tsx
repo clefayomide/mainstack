@@ -26,7 +26,7 @@ export default function NavMenu() {
     <header className="h-[64px] px-[16px] w-full border-2 border-[#FFFFFF] shadow-[0px_2px_6px_0px_#2D3B430F] flex items-center rounded-[100px]">
       <nav className="w-full h-full flex justify-between items-center">
         <MainstackLogo />
-        <NavigationMenu>
+        <NavigationMenu className="hidden lg:block">
           <NavigationMenuList className="flex gap-6">
             <NavigationMenuItem>
               <NavigationMenuTrigger>

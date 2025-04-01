@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/chart";
 import { ChartFooterLine } from "@/icons";
 import Box from "../atoms/box";
+import { ChartPropType } from "@/types";
+import { cn } from "@/lib/utils";
 const chartData = [
   { month: "January", desktop: 185 },
   { month: "February", desktop: 305 },
@@ -27,9 +29,14 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
-export function Chart() {
+export function Chart({ wrapperClassName }: Readonly<ChartPropType>) {
   return (
-    <Card className="shadow-none border-none  mt-10 outline-none p-0">
+    <Card
+      className={cn(
+        "shadow-none border-none  mt-10 outline-none p-0",
+        wrapperClassName
+      )}
+    >
       <CardContent className="px-0">
         <ChartContainer className="px-0" config={chartConfig}>
           <LineChart
