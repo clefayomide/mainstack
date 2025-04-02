@@ -1,3 +1,5 @@
+import { JSX } from "react";
+
 export function MainstackLogo() {
   return (
     <svg
@@ -685,6 +687,144 @@ export function Outflow() {
         <path
           d="M4.99984 16.5833L4.4165 16L14.4998 5.91668H8.4165V5.08334H15.9165V12.5833H15.0832V6.50001L4.99984 16.5833Z"
           fill="#961100"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function Close() {
+  return (
+    <svg
+      width="34"
+      height="34"
+      viewBox="0 0 34 34"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <mask
+        id="mask0_12317_753"
+        maskUnits="userSpaceOnUse"
+        x="4"
+        y="4"
+        width="24"
+        height="24"
+      >
+        <rect x="4" y="4" width="24" height="24" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_12317_753)">
+        <path
+          d="M10.4 22.3L9.69995 21.6L15.3 16L9.69995 10.4L10.4 9.70001L16 15.3L21.6 9.70001L22.3 10.4L16.7 16L22.3 21.6L21.6 22.3L16 16.7L10.4 22.3Z"
+          fill="#131316"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function DatePickerArrowDown() {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 20 20"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="transition-transform duration-300 group-data-[state=open]:rotate-180"
+    >
+      <mask
+        id="mask0_12377_714"
+        maskUnits="userSpaceOnUse"
+        x="0"
+        y="0"
+        width="20"
+        height="20"
+      >
+        <rect width="20" height="20" fill="#C4C4C4" />
+      </mask>
+      <g mask="url(#mask0_12377_714)">
+        <path
+          d="M9.99992 12.25L5.58325 7.83332L6.16659 7.22916L9.99992 11.0625L13.8333 7.22916L14.4166 7.83332L9.99992 12.25Z"
+          fill="#31373D"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function ChevronLeft({
+  className,
+  ...rest
+}: Readonly<JSX.IntrinsicElements["svg"]>) {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      {...rest}
+    >
+      <mask
+        id="mask0_1_1947"
+        maskUnits="userSpaceOnUse"
+        x="4"
+        y="4"
+        width="21"
+        height="21"
+      >
+        <rect
+          x="4.07153"
+          y="4.07156"
+          width="20.2209"
+          height="20.2209"
+          fill="#D9D9D9"
+        />
+      </mask>
+      <g mask="url(#mask0_1_1947)">
+        <path
+          d="M15.5721 18.3525L11.865 14.6664C11.7948 14.5822 11.7456 14.5013 11.7175 14.4238C11.6895 14.3468 11.6754 14.2662 11.6754 14.182C11.6754 14.0977 11.6895 14.0168 11.7175 13.9393C11.7456 13.8624 11.7948 13.7818 11.865 13.6975L15.5721 10.0114C15.6564 9.91313 15.7547 9.86398 15.867 9.86398C15.9794 9.86398 16.0777 9.91313 16.1619 10.0114C16.2602 10.0957 16.3094 10.194 16.3094 10.3063C16.3094 10.4187 16.2602 10.5169 16.1619 10.6012L12.5811 14.182L16.1619 17.7628C16.2602 17.847 16.3094 17.9453 16.3094 18.0576C16.3094 18.17 16.2602 18.2683 16.1619 18.3525C16.0777 18.4508 15.9794 18.5 15.867 18.5C15.7547 18.5 15.6564 18.4508 15.5721 18.3525Z"
+          fill="#131316"
+        />
+      </g>
+    </svg>
+  );
+}
+
+export function ChevronRight({
+  className,
+  ...rest
+}: Readonly<JSX.IntrinsicElements["svg"]>) {
+  return (
+    <svg
+      width="28"
+      height="28"
+      viewBox="0 0 28 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      {...rest}
+    >
+      <mask
+        id="mask0_1_1949"
+        maskUnits="userSpaceOnUse"
+        x="3"
+        y="4"
+        width="21"
+        height="21"
+      >
+        <rect
+          width="20.2209"
+          height="20.2209"
+          transform="matrix(-1 0 0 1 23.9285 4.07156)"
+          fill="#D9D9D9"
+        />
+      </mask>
+      <g mask="url(#mask0_1_1949)">
+        <path
+          d="M12.4279 18.3525L16.135 14.6664C16.2052 14.5822 16.2544 14.5013 16.2825 14.4238C16.3105 14.3468 16.3246 14.2662 16.3246 14.182C16.3246 14.0977 16.3105 14.0168 16.2825 13.9393C16.2544 13.8624 16.2052 13.7818 16.135 13.6975L12.4279 10.0114C12.3436 9.91313 12.2453 9.86398 12.133 9.86398C12.0206 9.86398 11.9223 9.91313 11.8381 10.0114C11.7398 10.0957 11.6906 10.194 11.6906 10.3063C11.6906 10.4187 11.7398 10.5169 11.8381 10.6012L15.4189 14.182L11.8381 17.7628C11.7398 17.847 11.6906 17.9453 11.6906 18.0576C11.6906 18.17 11.7398 18.2683 11.8381 18.3525C11.9223 18.4508 12.0206 18.5 12.133 18.5C12.2453 18.5 12.3436 18.4508 12.4279 18.3525Z"
+          fill="#131316"
         />
       </g>
     </svg>

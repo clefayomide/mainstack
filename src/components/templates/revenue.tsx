@@ -1,3 +1,6 @@
+
+"use client";
+
 import React from "react";
 import Balance from "../organisms/balance";
 import Summary from "../organisms/summary";
@@ -14,9 +17,12 @@ export default function Revenue() {
       >
         <Box variant="section" className="w-full md:w-[400px] xl:w-[630px]">
           <Balance />
-          <Chart wrapperClassName="mt-32 lg:mt-[20px] xl:mt-auto" />
+          <Chart wrapperClassName="mt-32 lg:mt-[20px]" />
         </Box>
-        <Box variant="section" className="mt-14 md:mt-0 w-full md:w-[260px] lg:w-[271px]">
+        <Box
+          variant="section"
+          className="mt-14 md:mt-0 w-full md:w-[260px] lg:w-[271px]"
+        >
           <Summary />
         </Box>
       </Box>

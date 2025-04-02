@@ -18,3 +18,17 @@ export type TransactionPropType = {
 export type ChartPropType = {
   wrapperClassName?: string;
 };
+
+type DatePickerClassNames = Partial<{
+  triggerClassName: string;
+}>;
+
+export type DatePickerPropType = {
+  classNames?: DatePickerClassNames;
+};
+
+export type TransactionFilterPropType = {
+  classNames?: DatePickerClassNames;
+  filters: { name: string }[];
+  placeholder: string
+};

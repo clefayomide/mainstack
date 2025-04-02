@@ -1,13 +1,19 @@
-import React from "react";
+import React, { use } from "react";
 import Box from "../atoms/box";
 import { Button } from "../ui/button";
 import { ChevronDown, Download } from "@/icons";
 import Transaction from "../molecules/transaction";
+import { FilterContext } from "@/context/filter";
 
 function TransactionFilter() {
+  const filterContext = use(FilterContext);
+
   return (
     <Box className="flex gap-5">
-      <Button className="h-[48px] bg-[#EFF1F6] w-[107px] text-base text-primary font-semibold">
+      <Button
+        onClick={filterContext.update}
+        className="h-[48px] bg-[#EFF1F6] w-[107px] text-base text-primary font-semibold"
+      >
         Filter{" "}
         <Box variant="span">
           <ChevronDown />

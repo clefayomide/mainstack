@@ -12,6 +12,8 @@ const buttonVariants = cva(
         default: "bg-primary text-[#FFFFFF]",
         disabled: "bg-[#EFF1F6] text-primary",
         icon: "bg-transparent p-0",
+        outline: "border border-[#EFF1F6] bg-white text-sm text-primary",
+        ghost: "",
       },
       size: {
         default: "h-[40px]",
