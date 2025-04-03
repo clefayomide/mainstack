@@ -1,8 +1,11 @@
 import React from "react";
 import Box from "../atoms/box";
 import { Info } from "@/icons";
+import { WalletResType } from "@/types";
 
-export default function Summary() {
+export default function Summary({
+  balance,
+}: Readonly<{ balance: WalletResType }>) {
   return (
     <Box variant="section" className="flex flex-col gap-8">
       <Box className="w-full h-[66px]">
@@ -18,7 +21,7 @@ export default function Summary() {
           variant="h3"
           className="font-bold mt-2 text-[28px] leading-[38px] text-primary"
         >
-          USD 0.00
+          USD {balance.ledger_balance}
         </Box>
       </Box>
 
@@ -35,7 +38,7 @@ export default function Summary() {
           variant="h3"
           className="font-bold mt-2 text-[28px] leading-[38px] text-primary"
         >
-          USD 55,080.00
+          USD {balance.total_payout}
         </Box>
       </Box>
 
@@ -52,7 +55,7 @@ export default function Summary() {
           variant="h3"
           className="font-bold mt-2 text-[28px] leading-[38px] text-primary"
         >
-          USD 175,580.00
+          USD {balance.total_revenue}
         </Box>
       </Box>
 
@@ -69,7 +72,7 @@ export default function Summary() {
           variant="h3"
           className="font-bold mt-2 text-[28px] leading-[38px] text-primary"
         >
-          USD 0.00
+          USD {balance.pending_payout}
         </Box>
       </Box>
     </Box>

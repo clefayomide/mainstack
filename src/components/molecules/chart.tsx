@@ -13,23 +13,15 @@ import { ChartFooterLine } from "@/icons";
 import Box from "../atoms/box";
 import { ChartPropType } from "@/types";
 import { cn } from "@/lib/utils";
-const chartData = [
-  { month: "January", desktop: 185 },
-  { month: "February", desktop: 305 },
-  { month: "March", desktop: 237 },
-  { month: "April", desktop: 73 },
-  { month: "May", desktop: 209 },
-  { month: "June", desktop: 214 },
-];
 
 const chartConfig = {
   desktop: {
-    label: "Desktop",
+    label: "Amount",
     color: "hsl(var(--chart-1))",
   },
 } satisfies ChartConfig;
 
-export function Chart({ wrapperClassName }: Readonly<ChartPropType>) {
+export function Chart({ wrapperClassName, data }: Readonly<ChartPropType>) {
   return (
     <Card
       className={cn(
@@ -41,7 +33,7 @@ export function Chart({ wrapperClassName }: Readonly<ChartPropType>) {
         <ChartContainer className="px-0" config={chartConfig}>
           <LineChart
             accessibilityLayer
-            data={chartData}
+            data={data}
             margin={{
               left: 12,
               right: 12,
@@ -54,7 +46,7 @@ export function Chart({ wrapperClassName }: Readonly<ChartPropType>) {
               content={<ChartTooltipContent hideLabel />}
             />
             <Line
-              dataKey="desktop"
+              dataKey="amount"
               type="natural"
               stroke="#FF5403"
               strokeWidth={1}

@@ -6,6 +6,7 @@ import Box from "../atoms/box";
 
 export default function Balance({
   wrapperClassName = "",
+  balance,
 }: Readonly<BalancePropType>) {
   return (
     <Box
@@ -26,7 +27,7 @@ export default function Balance({
           variant="h3"
           className="font-bold mt-1 text-primary text-[36px] leading-[48px]"
         >
-          USD 120,500.00
+          USD {balance.balance}
         </Box>
       </Box>
       <Button className="w-[167px] h-[52px] py-[14px] px-[28px]">

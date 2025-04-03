@@ -4,10 +4,12 @@ import { Inflow, Outflow } from "@/icons";
 import { TransactionPropType } from "@/types";
 import { cva } from "class-variance-authority";
 import { cn } from "@/lib/utils";
+import { format } from "date-fns";
 
 export default function Transaction({
   transactionType,
   variant,
+  transaction,
 }: Readonly<TransactionPropType>) {
   const isInflow = transactionType === "deposit";
   const icon = isInflow ? <Inflow /> : <Outflow />;
@@ -51,16 +53,16 @@ export default function Transaction({
             variant="h5"
             className="font-medium text-[15px] md:text-base leading-[24px] text-primary"
           >
-            Psychology of Money{" "}
+            {transaction.metadata?.product_name ?? "Cash withdrawal"}
           </Box>
           <Box
             variant="p"
             className={cn(
-              `text-xs md:text-sm font-medium leading-[16px]`,
+              `text-xs md:text-sm capitalize font-medium leading-[16px]`,
               statusVariants({ variant })
             )}
           >
-            Roy Cash
+            {transaction.status}
           </Box>
         </Box>
       </Box>
@@ -69,13 +71,13 @@ export default function Transaction({
           variant="h6"
           className="text-sm md:text-base text-right font-bold text-primary leading-[150%]"
         >
-          USD 600
+          USD {transaction.amount}
         </Box>
         <Box
           variant="p"
           className="font-medium text-right mt-1 text-xs md:text-sm text-[#56616B] leading-[16px]"
         >
-          Apr 03,2022
+          {format(transaction.date as string, "PPP")}
         </Box>
       </Box>
     </Box>

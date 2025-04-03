@@ -13,15 +13,22 @@ export type TypographyPropType = {
   className?: string;
 };
 
-export type BalancePropType = { wrapperClassName?: string };
+export type BalancePropType = {
+  wrapperClassName?: string;
+  balance: WalletResType;
+};
 
 export type TransactionPropType = {
   transactionType: "deposit" | "withdrawal";
   variant?: "default" | "successful" | "pending" | "failed";
+  transaction: TransactionResType[0];
 };
 
 export type ChartPropType = {
   wrapperClassName?: string;
+  data: {
+    amount: number | undefined;
+  }[];
 };
 
 type DatePickerClassNames = Partial<{
@@ -61,3 +68,27 @@ export type StatusAndTypeKeyType = keyof Pick<
   "transactionTypes"
 > &
   Pick<FilterFormFieldPropType, "transactionStatuses">;
+
+export type WalletResType = {
+  balance: number;
+  total_payout: number;
+  total_revenue: number;
+  pending_payout: number;
+  ledger_balance: number;
+};
+
+export type TransactionResType = Partial<{
+  amount: number;
+  metadata: {
+    name: string;
+    type: string;
+    email: string;
+    quantity: number;
+    country: string;
+    product_name: string;
+  };
+  payment_reference: string;
+  status: string;
+  type: string;
+  date: string;
+}>[];
