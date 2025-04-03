@@ -5,6 +5,7 @@ import { ChevronDown, Download } from "@/icons";
 import Transaction from "../molecules/transaction";
 import { FilterContext } from "@/context/filter";
 import { TransactionPropType, TransactionResType } from "@/types";
+import NoFilterMatchComp from "../molecules/no-filter-match";
 
 function TransactionFilter() {
   const filterContext = use(FilterContext);
@@ -20,8 +21,8 @@ function TransactionFilter() {
           <ChevronDown />
         </Box>
       </Button>
-      <Button className="h-[48px] bg-[#EFF1F6] w-[107px] text-base text-primary font-semibold">
-        Export{" "}
+      <Button className="h-[48px] bg-[#EFF1F6] w-[139px] text-base text-primary font-semibold">
+        Export list{" "}
         <Box variant="span">
           <Download />
         </Box>
@@ -35,6 +36,14 @@ export default function TransactionHistory({
 }: Readonly<{
   transactionHistory: TransactionResType;
 }>) {
+  const filterContext = use(FilterContext);
+  const handleClear = () =>
+    filterContext.handleFilterItems({
+      transactionStatuses: [],
+      transactionTypes: [],
+      endDate: null,
+      startDate: null,
+    });
   return (
     <Box>
       <Box className="flex justify-between h-[72px] pb-[24px] border-b border-[#EFF1F6]">
@@ -61,30 +70,36 @@ export default function TransactionHistory({
         <Box variant="section" className="flex justify-end md:hidden">
           <TransactionFilter />
         </Box>
-        {transactionHistory.map((transaction, index) => {
-          if (transaction.type === "deposit") {
-            transaction.status = transaction.metadata?.name;
+        {!transactionHistory.length && (
+          <Box className="flex justify-center items-center w-full mt-8 ">
+            <NoFilterMatchComp onClear={handleClear} />
+          </Box>
+        )}
+        {!!transactionHistory.length &&
+          transactionHistory.map((transaction, index) => {
+            if (transaction.type === "deposit") {
+              transaction.status = transaction.metadata?.name;
+              return (
+                <Transaction
+                  key={transaction.payment_reference ?? `transaction_${index}`}
+                  transaction={transaction}
+                  transactionType="deposit"
+                />
+              );
+            }
             return (
               <Transaction
-                key={transaction.payment_reference ?? `transaction_${index}`}
                 transaction={transaction}
-                transactionType="deposit"
+                key={transaction.payment_reference ?? `transaction_${index}`}
+                variant={
+                  transaction.status?.toLowerCase() as TransactionPropType["variant"]
+                }
+                transactionType={
+                  transaction.type as TransactionPropType["transactionType"]
+                }
               />
             );
-          }
-          return (
-            <Transaction
-              transaction={transaction}
-              key={transaction.payment_reference ?? `transaction_${index}`}
-              variant={
-                transaction.status?.toLowerCase() as TransactionPropType["variant"]
-              }
-              transactionType={
-                transaction.type as TransactionPropType["transactionType"]
-              }
-            />
-          );
-        })}
+          })}
       </Box>
     </Box>
   );

@@ -39,8 +39,8 @@ type FieldPropType = ControllerRenderProps<FieldValues, string>;
 export type FilterFormFieldPropType = {
   transactionStatuses: string[];
   transactionTypes: string[];
-  endDate: Date | null;
-  startDate: Date | null;
+  endDate: string | null | undefined;
+  startDate: string | null | undefined;
 };
 type FormHookPropType = UseFormReturn<
   FilterFormFieldPropType,
@@ -92,3 +92,17 @@ export type TransactionResType = Partial<{
   type: string;
   date: string;
 }>[];
+
+// export type TransactionFilter = {
+//   transactionStatuses: string[];
+//   transactionTypes: string[];
+//   endDate: string; // ISO date string
+//   startDate: string; // ISO date string
+// } | null;
+
+export type ContextType = {
+  isFilterOpen: boolean;
+  update: () => void;
+  filterItems: FilterFormFieldPropType | null;
+  handleFilterItems: (items: FilterFormFieldPropType) => void;
+};

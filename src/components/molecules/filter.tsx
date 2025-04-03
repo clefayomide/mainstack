@@ -44,7 +44,7 @@ export default function Filter() {
   const transactionTypeOptions = [
     { name: "Store Transactions" },
     { name: "Get Tipped" },
-    { name: "Withdrawals" },
+    { name: "Withdrawal" },
     { name: "Chargebacks" },
     { name: "Cashbacks" },
     { name: "Refer & Earn" },
@@ -55,6 +55,20 @@ export default function Filter() {
     { name: "Failed" },
     { name: "Pending" },
   ];
+
+  const handleSubmit = (data: FilterFormFieldPropType) => {
+    filterContext.handleFilterItems(data);
+  };
+  const handleReset = () => {
+    form.reset();
+    filterContext.handleFilterItems({
+      transactionStatuses: [],
+      transactionTypes: [],
+      endDate: null,
+      startDate: null,
+    });
+  };
+
   return (
     <Card className="w-full h-full md:w-[456px] rounded-[20px] bg-white px-6 py-0">
       <CardHeader className="h-[74px] p-0 flex justify-between items-center">
@@ -81,7 +95,7 @@ export default function Filter() {
         </Box>
 
         <Form {...form}>
-          <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+          <form onSubmit={form.handleSubmit(handleSubmit)}>
             <Box className="h-[276px] mt-8">
               <FormLabel>Date Range</FormLabel>
               <Box className="flex justify-between md:justify-start gap-2 mt-2">
@@ -160,6 +174,7 @@ export default function Filter() {
 
             <Box className="flex justify-between md:gap-[16px] absolute bottom-6 w-full">
               <Button
+                onClick={handleReset}
                 type="button"
                 variant={"outline"}
                 className="w-[48%] md:w-[190px]"

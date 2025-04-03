@@ -7,6 +7,7 @@ import SlideInFilter from "@/components/templates/slide-in-filter";
 import { useMemo, useState } from "react";
 import Box from "@/components/atoms/box";
 import { FilterContext } from "@/context/filter";
+import { FilterFormFieldPropType } from "@/types";
 
 const degular = localFont({
   src: [
@@ -24,14 +25,25 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [openFilter, setOpenFilter] = useState(false);
+  const [filterItems, setFilterItems] =
+    useState<FilterFormFieldPropType | null>(null);
 
   const update = () => {
     setOpenFilter((prev) => !prev);
   };
 
+  const handleFilterItems = (items: FilterFormFieldPropType) => {
+    setFilterItems(items);
+  };
+
   const filterContextValue = useMemo(
-    () => ({ isFilterOpen: openFilter, update }),
-    [openFilter]
+    () => ({
+      isFilterOpen: openFilter,
+      update,
+      filterItems,
+      handleFilterItems,
+    }),
+    [openFilter, filterItems]
   );
 
   return (

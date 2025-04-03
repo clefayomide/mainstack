@@ -7,6 +7,7 @@ import Box from "../atoms/box";
 import { Chart } from "../molecules/chart";
 import TransactionHistory from "../organisms/transaction-history";
 import { TransactionResType, WalletResType } from "@/types";
+import { FilterContext } from "@/context/filter";
 
 export default function Revenue({
   dataPromise,
@@ -14,9 +15,28 @@ export default function Revenue({
   dataPromise: Promise<[TransactionResType, WalletResType]>;
 }>) {
   const revenueData = use(dataPromise);
+  const filterContext = use(FilterContext);
+
   const chartData = revenueData[0].map(({ amount }) => {
     return { amount };
   });
+
+  const filterTransactionHistory = revenueData[0].filter((transaction) => {
+    const { transactionStatuses = [], transactionTypes = [] } =
+      filterContext.filterItems ?? {};
+
+    const transactionStatusMatch =
+      !transactionStatuses.length ||
+      transactionStatuses?.includes(
+        transaction.status?.toLowerCase() as string
+      );
+    const transactionTypeMatch =
+      !transactionTypes.length ||
+      transactionTypes?.includes(transaction.type?.toLowerCase() as string);
+
+    return transactionStatusMatch && transactionTypeMatch;
+  });
+
   return (
     <Box>
       <Box
@@ -36,7 +56,7 @@ export default function Revenue({
       </Box>
 
       <Box variant="section" className="mt-18">
-        <TransactionHistory transactionHistory={revenueData[0]} />
+        <TransactionHistory transactionHistory={filterTransactionHistory} />
       </Box>
     </Box>
   );
