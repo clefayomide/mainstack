@@ -25,6 +25,8 @@ export default function NoFilterMatchComp({
       </Box>
       <Button
         variant={"disabled"}
+        type="button"
+        onClick={onClear}
         className="font-semibold text-base text-primary w-[117px] h-[48px]"
       >
         Clear Filter
