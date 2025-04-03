@@ -871,8 +871,8 @@ export function NoFilterMatch() {
           y2="46.8145"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#DBDEE6" />
-          <stop offset="1" stop-color="#F6F7F9" />
+          <stop stopColor="#DBDEE6" />
+          <stop offset="1" stopColor="#F6F7F9" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_12866_631"
@@ -882,8 +882,8 @@ export function NoFilterMatch() {
           y2="31.5158"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#5C6670" />
-          <stop offset="1" stop-color="#131316" />
+          <stop stopColor="#5C6670" />
+          <stop offset="1" stopColor="#131316" />
         </linearGradient>
       </defs>
     </svg>
