@@ -11,7 +11,6 @@ function Checkbox({
   className,
   id,
   label,
-  onChange,
   ...props
 }: React.ComponentProps<typeof CheckboxPrimitive.Root> & {
   label: string;

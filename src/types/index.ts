@@ -44,7 +44,7 @@ export type FilterFormFieldPropType = {
 };
 type FormHookPropType = UseFormReturn<
   FilterFormFieldPropType,
-  any,
+  never,
   FilterFormFieldPropType
 >;
 

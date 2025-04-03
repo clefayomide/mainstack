@@ -34,7 +34,10 @@ export default function TransactionFilter({
   return (
     <Popover>
       <PopoverTrigger
-        className={cn("min-w-full max-w-full w-full", triggerClassName)}
+        className={cn(
+          "min-w-full max-w-full w-full",
+          triggerClassName
+        )}
         asChild
       >
         <Button
@@ -44,7 +47,7 @@ export default function TransactionFilter({
             !triggerLabel && "text-muted-foreground"
           )}
         >
-          <Box className="flex justify-between items-center">
+          <Box className="flex w-full justify-between items-center">
             <span className="font-medium capitalize text-sm leading-[16px] text-primary">
               {triggerLabel}
             </span>
