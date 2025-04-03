@@ -22,8 +22,21 @@ export default function Revenue({
   });
 
   const filterTransactionHistory = revenueData[0].filter((transaction) => {
-    const { transactionStatuses = [], transactionTypes = [] } =
-      filterContext.filterItems ?? {};
+    const {
+      transactionStatuses = [],
+      transactionTypes = [],
+      endDate = "",
+      startDate = "",
+    } = filterContext.filterItems ?? {};
+
+    const startDateObj = new Date(startDate as string);
+    const endDateObj = new Date(endDate as string);
+    const transactionDate = new Date(transaction.date as string);
+
+    const dateRangeMatch =
+      !startDate ||
+      !endDate ||
+      (transactionDate >= startDateObj && transactionDate <= endDateObj);
 
     const transactionStatusMatch =
       !transactionStatuses.length ||
@@ -34,7 +47,7 @@ export default function Revenue({
       !transactionTypes.length ||
       transactionTypes?.includes(transaction.type?.toLowerCase() as string);
 
-    return transactionStatusMatch && transactionTypeMatch;
+    return transactionStatusMatch && transactionTypeMatch && dateRangeMatch;
   });
 
   return (
