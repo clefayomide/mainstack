@@ -7,8 +7,31 @@ import { cn } from "@/lib/utils";
 import DatePicker from "./date-picker";
 import TransactionFilter from "./transaction-filter";
 import { FilterContext } from "@/context/filter";
+import { useForm, useWatch } from "react-hook-form";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "../ui/form";
+import { FilterFormFieldPropType } from "@/types";
 
 export default function Filter() {
+  const form = useForm<FilterFormFieldPropType>({
+    defaultValues: {
+      transactionStatuses: [],
+      transactionTypes: [],
+      endDate: null,
+      startDate: null,
+    },
+  });
+
+  const { transactionStatuses, transactionTypes } = useWatch({
+    control: form.control,
+  });
+
   const filterContext = use(FilterContext);
 
   const filterBtns = [
@@ -18,7 +41,7 @@ export default function Filter() {
     { name: "Last 3 months", className: "w-[116px]" },
   ];
 
-  const transactionTypes = [
+  const transactionTypeOptions = [
     { name: "Store Transactions" },
     { name: "Get Tipped" },
     { name: "Withdrawals" },
@@ -27,7 +50,7 @@ export default function Filter() {
     { name: "Refer & Earn" },
   ];
 
-  const transactionStatus = [
+  const transactionStatusOptions = [
     { name: "Successful" },
     { name: "Failed" },
     { name: "Pending" },
@@ -43,7 +66,7 @@ export default function Filter() {
         </button>
       </CardHeader>
       <CardContent className="h-full relative p-0">
-        <Box className="flex gap-2">
+        <Box className="flex flex-wrap gap-[6px]">
           {filterBtns.map(({ name, className }) => {
             return (
               <Button
@@ -57,33 +80,98 @@ export default function Filter() {
           })}
         </Box>
 
-        <Box className="h-[276px] mt-8">
-          <Box className="flex justify-between">
-            <DatePicker />
-            <DatePicker />
-          </Box>
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit((data) => console.log(data))}>
+            <Box className="h-[276px] mt-8">
+              <FormLabel>Date Range</FormLabel>
+              <Box className="flex justify-between md:justify-start gap-2 mt-2">
+                <FormField
+                  control={form.control}
+                  name="startDate"
+                  render={({ field }) => (
+                    <FormItem className="w-[48%] md:w-[200px]">
+                      <FormControl>
+                        <DatePicker field={field} />
+                      </FormControl>
+                      <FormMessage></FormMessage>
+                    </FormItem>
+                  )}
+                />
 
-          <Box className="mt-10">
-            <TransactionFilter
-              placeholder="Select transaction type"
-              filters={transactionTypes}
-            />
-          </Box>
+                <FormField
+                  control={form.control}
+                  name="endDate"
+                  render={({ field }) => (
+                    <FormItem className="w-[48%] md:w-[200px]">
+                      <FormControl>
+                        <DatePicker field={field} />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </Box>
 
-          <Box className="mt-10">
-            <TransactionFilter
-              placeholder="Select transaction status"
-              filters={transactionStatus}
-            />
-          </Box>
-        </Box>
+              <Box className="mt-7">
+                <FormField
+                  control={form.control}
+                  name="transactionTypes"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Transaction Type</FormLabel>
+                      <FormControl>
+                        <TransactionFilter
+                          field={field}
+                          form={form}
+                          filters={transactionTypeOptions}
+                          triggerLabel={
+                            transactionTypes?.join(", ") ||
+                            "Select transaction type"
+                          }
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </Box>
 
-        <Box className="flex gap-[16px] absolute bottom-6">
-          <Button variant={"outline"} className="w-[190px]">
-            Cancel
-          </Button>
-          <Button className="w-[190px]">Apply</Button>
-        </Box>
+              <Box className="mt-7">
+                <FormField
+                  control={form.control}
+                  name="transactionStatuses"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormLabel>Transaction Status</FormLabel>
+                      <FormControl className="w-full">
+                        <TransactionFilter
+                          field={field}
+                          form={form}
+                          filters={transactionStatusOptions}
+                          triggerLabel={
+                            transactionStatuses?.join(", ") ||
+                            "Select transaction status"
+                          }
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+              </Box>
+            </Box>
+
+            <Box className="flex justify-between md:gap-[16px] absolute bottom-6 w-full">
+              <Button
+                type="button"
+                variant={"outline"}
+                className="w-[48%] md:w-[190px]"
+              >
+                Cancel
+              </Button>
+              <Button type="submit" className="w-[48%] md:w-[190px]">
+                Apply
+              </Button>
+            </Box>
+          </form>
+        </Form>
       </CardContent>
     </Card>
   );

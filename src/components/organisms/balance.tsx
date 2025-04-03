@@ -11,7 +11,7 @@ export default function Balance({
     <Box
       variant="section"
       className={cn(
-        "w-full md:w-[462px] h-[72px] flex flex-col md:flex-row gap-5 md:gap-0 justify-between md:items-center",
+        "w-full md:w-[462px] h-[72px] flex flex-col lg:flex-row gap-5 lg:gap-0 justify-between lg:items-center",
         wrapperClassName
       )}
     >

@@ -17,25 +17,24 @@ import { DatePickerArrowDown } from "@/icons";
 
 export default function DatePicker({
   classNames: { triggerClassName } = {},
+  field,
 }: Readonly<DatePickerPropType>) {
-  const [date, setDate] = React.useState<Date>();
-
   return (
     <Popover>
       <PopoverTrigger
-        className={cn("w-full md:w-[200px]", triggerClassName)}
+        className={cn("", triggerClassName)}
         asChild
       >
         <Button
           variant={"disabled"}
           className={cn(
-            "justify-start rounded-[12px] text-left font-normal",
-            !date && "text-muted-foreground"
+            "justify-start h-[48px] rounded-[12px] text-left font-normal",
+            !field.value && "text-muted-foreground"
           )}
         >
           <Box className="flex justify-between items-center w-full">
-            {date ? (
-              format(date, "PPP")
+            {field.value ? (
+              format(field.value, "PPP")
             ) : (
               <span className="font-medium text-sm leading-[16px] text-primary">
                 Pick a date
@@ -48,8 +47,8 @@ export default function DatePicker({
       <PopoverContent className="w-full p-0" align="start">
         <Calendar
           mode="single"
-          selected={date}
-          onSelect={setDate}
+          selected={field.value}
+          onSelect={field.onChange}
           initialFocus
         />
       </PopoverContent>

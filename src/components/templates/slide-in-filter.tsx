@@ -19,7 +19,7 @@ export default function SlideInFilter() {
           exit={{ opacity: 0, transition: { delay: 0.3 } }}
           transition={{ duration: 0.3 }}
           className={cn(
-            "h-screen z-20 fixed overflow-hidden bg-gray-300/60 w-full left-0 top-0 p-2 flex justify-end",
+            "h-screen z-40 fixed overflow-hidden bg-gray-300/60 w-full left-0 top-0 p-2 flex justify-end",
             filterContext.isFilterOpen
               ? "pointer-events-auto"
               : "pointer-events-none"

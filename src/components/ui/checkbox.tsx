@@ -11,8 +11,12 @@ function Checkbox({
   className,
   id,
   label,
+  onChange,
   ...props
-}: React.ComponentProps<typeof CheckboxPrimitive.Root> & { label: string }) {
+}: React.ComponentProps<typeof CheckboxPrimitive.Root> & {
+  label: string;
+  onChange: React.FormEventHandler<HTMLInputElement> | undefined;
+}) {
   return (
     <Box className="flex items-center space-x-2">
       <CheckboxPrimitive.Root

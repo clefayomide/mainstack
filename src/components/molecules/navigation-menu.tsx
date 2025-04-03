@@ -1,12 +1,8 @@
 import {
   NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
 import {
   Analytics,
@@ -20,10 +16,31 @@ import {
   Revenue,
 } from "@/icons";
 import { Button } from "../ui/button";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useState } from "react";
 
 export default function NavMenu() {
+  const [hideMenu, setHideMenu] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const prev = scrollY.getPrevious() as number;
+    if (latest > prev && latest > 200) {
+      setHideMenu(true);
+    } else {
+      setHideMenu(false);
+    }
+  });
   return (
-    <header className="h-[64px] px-[16px] w-full border-2 border-[#FFFFFF] shadow-[0px_2px_6px_0px_#2D3B430F] flex items-center rounded-[100px]">
+    <motion.header
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-150%" },
+      }}
+      animate={hideMenu ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
+      className="h-[64px] px-[16px] border-2 border-[#FFFFFF] fixed z-30 left-[16px] right-[16px] shadow-[0px_2px_6px_0px_#2D3B430F] flex items-center rounded-[100px] bg-white"
+    >
       <nav className="w-full h-full flex justify-between items-center">
         <MainstackLogo />
         <NavigationMenu className="hidden lg:block">
@@ -92,6 +109,6 @@ export default function NavMenu() {
           </Button>
         </div>
       </nav>
-    </header>
+    </motion.header>
   );
 }
