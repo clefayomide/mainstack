@@ -27,7 +27,7 @@ export default function Balance({
           variant="h3"
           className="font-bold mt-1 text-primary text-[36px] leading-[48px]"
         >
-          {formatMoney(balance.balance)}
+          {formatMoney(balance)}
         </Box>
       </Box>
       <Button className="w-[167px] h-[52px] py-[14px] px-[28px]">

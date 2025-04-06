@@ -15,7 +15,7 @@ export type TypographyPropType = {
 
 export type BalancePropType = {
   wrapperClassName?: string;
-  balance: WalletResType;
+  balance: WalletResType["balance"];
 };
 
 export type TransactionPropType = {
@@ -102,4 +102,10 @@ export type ContextType = {
 export type FilterStateType = {
   openFilter: boolean;
   filterItems: FilterFormFieldPropType | null;
+};
+
+export type BalanceSummaryType = Omit<WalletResType, "balance">;
+
+export type BalanceSummaryPropType = {
+  balanceSummary: Record<keyof BalanceSummaryType, number>;
 };

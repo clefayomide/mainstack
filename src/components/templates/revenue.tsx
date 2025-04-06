@@ -50,6 +50,8 @@ export default function Revenue({
     return transactionStatusMatch && transactionTypeMatch && dateRangeMatch;
   });
 
+  const { balance, ...rest } = revenueData[1];
+
   return (
     <Box>
       <Box
@@ -57,14 +59,14 @@ export default function Revenue({
         className="flex flex-col md:flex-row justify-between"
       >
         <Box variant="section" className="w-full md:w-[400px] xl:w-[630px]">
-          <Balance balance={revenueData[1]} />
+          <Balance balance={balance} />
           <Chart data={chartData} wrapperClassName="mt-32 lg:mt-[20px]" />
         </Box>
         <Box
           variant="section"
           className="mt-14 md:mt-0 w-full md:w-[260px] lg:w-[271px]"
         >
-          <Summary balance={revenueData[1]} />
+          <Summary balanceSummary={rest} />
         </Box>
       </Box>
 
