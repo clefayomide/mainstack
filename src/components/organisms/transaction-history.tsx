@@ -14,9 +14,14 @@ function TransactionFilter() {
     <Box className="flex gap-5">
       <Button
         onClick={filterContext.update}
-        className="h-[48px] bg-[#EFF1F6] w-[107px] text-base text-primary font-semibold"
+        className="h-[48px] bg-[#EFF1F6] w-[131px] text-base text-primary font-semibold"
       >
         Filter{" "}
+        {!!filterContext.filterCount && (
+          <div className="w-5 h-5 text-white rounded-[100px] bg-primary text-xs font-medium text-center leading-5">
+            {filterContext.filterCount}
+          </div>
+        )}
         <Box variant="span">
           <ChevronDown />
         </Box>

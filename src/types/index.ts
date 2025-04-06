@@ -39,8 +39,8 @@ type FieldPropType = ControllerRenderProps<FieldValues, string>;
 export type FilterFormFieldPropType = {
   transactionStatuses: string[];
   transactionTypes: string[];
-  endDate: string | null | undefined;
-  startDate: string | null | undefined;
+  endDate: Date | null | undefined;
+  startDate: Date | null | undefined;
 };
 type FormHookPropType = UseFormReturn<
   FilterFormFieldPropType,
@@ -56,10 +56,8 @@ export type DatePickerPropType = {
 export type TransactionFilterPropType = {
   classNames?: DatePickerClassNames;
   filters: { name: string }[];
-  // placeholder: string;
   field: FieldPropType;
   form: FormHookPropType;
-  // setCheckBoxSelection: SetCheckBoxSelection;
   triggerLabel: string;
 };
 
@@ -93,16 +91,15 @@ export type TransactionResType = Partial<{
   date: string;
 }>[];
 
-// export type TransactionFilter = {
-//   transactionStatuses: string[];
-//   transactionTypes: string[];
-//   endDate: string; // ISO date string
-//   startDate: string; // ISO date string
-// } | null;
-
 export type ContextType = {
   isFilterOpen: boolean;
   update: () => void;
   filterItems: FilterFormFieldPropType | null;
   handleFilterItems: (items: FilterFormFieldPropType) => void;
+  filterCount: number;
+};
+
+export type FilterStateType = {
+  openFilter: boolean;
+  filterItems: FilterFormFieldPropType | null;
 };

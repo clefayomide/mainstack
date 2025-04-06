@@ -7,7 +7,7 @@ import SlideInFilter from "@/components/templates/slide-in-filter";
 import { useMemo, useState } from "react";
 import Box from "@/components/atoms/box";
 import { FilterContext } from "@/context/filter";
-import { FilterFormFieldPropType } from "@/types";
+import { FilterFormFieldPropType, FilterStateType } from "@/types";
 
 const degular = localFont({
   src: [
@@ -24,33 +24,58 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const [openFilter, setOpenFilter] = useState(false);
-  const [filterItems, setFilterItems] =
-    useState<FilterFormFieldPropType | null>(null);
+  const [filter, setFilter] = useState<FilterStateType>({
+    openFilter: false,
+    filterItems: null,
+  });
 
   const update = () => {
-    setOpenFilter((prev) => !prev);
+    setFilter((prev) => {
+      return { ...prev, openFilter: !prev.openFilter };
+    });
   };
 
   const handleFilterItems = (items: FilterFormFieldPropType) => {
-    setFilterItems(items);
+    setFilter((prev) => {
+      return { ...prev, filterItems: items };
+    });
   };
+
+  const filterCount = useMemo(() => {
+    if (!filter.filterItems) return 0;
+
+    return Object.values(filter.filterItems).reduce((acc, item) => {
+      if (Array.isArray(item)) {
+        return acc + item.length;
+      }
+      if (
+        !Array.isArray(item) &&
+        typeof item === "object" &&
+        !Object.is(item, null)
+      ) {
+        return acc++;
+      }
+
+      return acc;
+    }, 0);
+  }, [filter.filterItems]);
 
   const filterContextValue = useMemo(
     () => ({
-      isFilterOpen: openFilter,
+      isFilterOpen: filter.openFilter,
       update,
-      filterItems,
+      filterItems: filter.filterItems,
       handleFilterItems,
+      filterCount,
     }),
-    [openFilter, filterItems]
+    [filter.openFilter, filterCount, filter.filterItems]
   );
 
   return (
     <html lang="en">
       <body
         className={`${degular.className} ${
-          openFilter && "overflow-hidden"
+          filter.openFilter && "overflow-hidden"
         } p-[16px] `}
       >
         <FilterContext.Provider value={filterContextValue}>

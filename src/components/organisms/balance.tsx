@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../ui/button";
-import { cn } from "@/lib/utils";
+import { cn, formatMoney } from "@/lib/utils";
 import { BalancePropType } from "@/types";
 import Box from "../atoms/box";
 
@@ -27,7 +27,7 @@ export default function Balance({
           variant="h3"
           className="font-bold mt-1 text-primary text-[36px] leading-[48px]"
         >
-          USD {balance.balance}
+          {formatMoney(balance.balance)}
         </Box>
       </Box>
       <Button className="w-[167px] h-[52px] py-[14px] px-[28px]">

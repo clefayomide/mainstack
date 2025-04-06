@@ -6,4 +6,5 @@ export const FilterContext = createContext<ContextType>({
   update: () => {},
   filterItems: null,
   handleFilterItems: () => {},
+  filterCount: 0
 });

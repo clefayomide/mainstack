@@ -3,7 +3,7 @@ import Box from "../atoms/box";
 import { Inflow, Outflow } from "@/icons";
 import { TransactionPropType } from "@/types";
 import { cva } from "class-variance-authority";
-import { cn } from "@/lib/utils";
+import { cn, formatMoney } from "@/lib/utils";
 import { format } from "date-fns";
 
 export default function Transaction({
@@ -71,7 +71,7 @@ export default function Transaction({
           variant="h6"
           className="text-sm md:text-base text-right font-bold text-primary leading-[150%]"
         >
-          USD {transaction.amount}
+          {formatMoney(transaction.amount as number)}
         </Box>
         <Box
           variant="p"

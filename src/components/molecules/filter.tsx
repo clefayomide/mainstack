@@ -19,20 +19,20 @@ import {
 import { FilterFormFieldPropType } from "@/types";
 
 export default function Filter() {
+  const filterContext = use(FilterContext);
+
   const form = useForm<FilterFormFieldPropType>({
     defaultValues: {
-      transactionStatuses: [],
-      transactionTypes: [],
-      endDate: null,
-      startDate: null,
+      transactionStatuses: filterContext.filterItems?.transactionStatuses ?? [],
+      transactionTypes: filterContext.filterItems?.transactionTypes ?? [],
+      endDate: filterContext.filterItems?.endDate ?? null,
+      startDate: filterContext.filterItems?.startDate ?? null,
     },
   });
 
   const { transactionStatuses, transactionTypes } = useWatch({
     control: form.control,
   });
-
-  const filterContext = use(FilterContext);
 
   const filterBtns = [
     { name: "Today", className: "w-[70px]" },
