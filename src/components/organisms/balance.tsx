@@ -24,6 +24,7 @@ export default function Balance({
           Available Balance
         </Box>
         <Box
+          data-testid="balance"
           variant="h3"
           className="font-bold mt-1 text-primary text-[36px] leading-[48px]"
         >

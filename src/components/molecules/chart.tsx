@@ -25,7 +25,7 @@ export function Chart({ wrapperClassName, data }: Readonly<ChartPropType>) {
   return (
     <Card
       className={cn(
-        "shadow-none border-none  mt-10 outline-none p-0",
+        "shadow-none border-none mt-10 outline-none p-0",
         wrapperClassName
       )}
     >

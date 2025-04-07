@@ -24,6 +24,7 @@ export default function Summary({
               </Box>
             </Box>
             <Box
+              data-testid={key}
               variant="h3"
               className="font-bold mt-2 text-[28px] leading-[38px] text-primary"
             >
