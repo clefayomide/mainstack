@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: process.env.BASE_URL,
+  baseURL: "https://fe-task-api.mainstack.io/",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
