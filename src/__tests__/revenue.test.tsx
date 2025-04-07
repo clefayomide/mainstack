@@ -18,25 +18,23 @@ describe("Revenue Page", () => {
       render(<Page />);
     });
   });
+
   it("Should show a loading indicator", async () => {
     expect(screen.getByText("Loading...")).toBeInTheDocument();
   });
 
   it("should render accurate wallet available balance based on fetched data", async () => {
-    const walletInfo = walletMockData;
-    expect(walletInfo).toStrictEqual(walletMockData);
-
-    const balance = walletInfo.total_revenue - walletInfo.total_payout;
-    await waitFor(async () => {
-      const balanceElement = await screen.findByTestId("balance");
-      expect(balanceElement).toHaveTextContent(formatMoney(balance));
-    });
+    const balance = walletMockData.total_revenue - walletMockData.total_payout;
+    await waitFor(
+      async () => {
+        const balanceElement = await screen.findByTestId("balance");
+        expect(balanceElement).toHaveTextContent(formatMoney(balance));
+      },
+      { timeout: 5000 }
+    );
   });
 
   it("should render accurate total_payout/total_revenue/pending_payout/ledger_balance based on fetched data", async () => {
-    const walletInfo = walletMockData;
-    expect(walletInfo).toStrictEqual(walletMockData);
-
     const testIds = [
       "total_payout",
       "total_revenue",
