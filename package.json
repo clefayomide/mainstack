@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "yarn run test && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run"
@@ -45,7 +45,6 @@
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
     "jsdom": "^26.0.0",
-    "react-test-renderer": "^19.1.0",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vite-tsconfig-paths": "^5.1.4",
